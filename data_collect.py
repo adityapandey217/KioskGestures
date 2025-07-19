@@ -16,7 +16,8 @@ CSV_PATH = "data.csv"
 # Labels
 LABELS = {
     "u": 1,  # thumbs up
-    "d": 0   # thumbs down
+    "d": 0,  # thumbs down
+    "o": 2   # other gesture
 }
 
 # Prepare CSV (create header if doesn't exist)
@@ -32,6 +33,7 @@ cap = cv2.VideoCapture(0)
 
 print("Press 'u' to collect THUMBS UP")
 print("Press 'd' to collect THUMBS DOWN")
+print("Press 'o' to collect OTHER gesture (random/neutral/none)")
 print("Each key will record continuously for 60 seconds.")
 print("Press 'q' to quit.")
 
@@ -57,7 +59,8 @@ while True:
         label = LABELS[chr(key)]
         start_time = time.time()
         collecting = True
-        print(f"\n▶️ Started collecting for label {label} ({'Thumbs Up' if label else 'Thumbs Down'})...")
+        label_text = "Thumbs Up" if label == 1 else "Thumbs Down" if label == 0 else "Other"
+        print(f"\n▶️ Started collecting for label {label} ({label_text})...")
 
     if collecting and time.time() - start_time >= 60:
         collecting = False
@@ -80,10 +83,10 @@ while True:
                     writer = csv.writer(f)
                     writer.writerow(row)
 
-    # Display message while collecting
     if collecting:
         elapsed = int(time.time() - start_time)
-        cv2.putText(image, f"Collecting {'Thumbs Up' if label else 'Thumbs Down'}: {elapsed}s",
+        label_text = "Thumbs Up" if label == 1 else "Thumbs Down" if label == 0 else "Other"
+        cv2.putText(image, f"Collecting {label_text}: {elapsed}s",
                     (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
 
     cv2.imshow("Hand Gesture Collector", image)
