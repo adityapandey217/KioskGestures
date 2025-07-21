@@ -37,8 +37,8 @@ This project uses [MediaPipe](https://google.github.io/mediapipe/) to extract ha
 |---------------|-------|--------------|-------------|
 | Thumbs Down   | 0     | 4,614        | 👎 Downward thumb gesture |
 | Thumbs Up     | 1     | 4,561        | 👍 Upward thumb gesture |
-| Other         | 2     | 3,667        | ✋ Random/neutral gestures |
-| **Total**     | -     | **12,842**   | Complete dataset |
+| Other         | 2     | 4540        | ✋ Random/neutral gestures |
+| **Total**     | -     | **13,716**   | Complete dataset |
 
 **Data Format:** CSV with 65 columns (64 features + 1 label)
 
