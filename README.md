@@ -50,7 +50,7 @@ This project uses [MediaPipe](https://google.github.io/mediapipe/) to extract ha
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/adityapandey217/KioskGestures.git
 cd KioskGestures
 
 # Install dependencies
